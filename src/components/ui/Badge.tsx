@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 
 type BadgeProps = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+  className?: string;
+};
 
-const Badge = ({children}: BadgeProps) => {
+const Badge = ({ children, className = "" }: BadgeProps) => {
   return (
-    <span>{children}</span>
-  )
-}
+    <span
+      className={`inline-block rounded-md border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-medium text-slate-700 ${className}`}
+    >
+      {children}
+    </span>
+  );
+};
 
-export default Badge
-
-// className="rounded-sm border border-slate-200 bg-slate-50 px-2 py-1 text-xs text-slate-600"
+export default Badge;

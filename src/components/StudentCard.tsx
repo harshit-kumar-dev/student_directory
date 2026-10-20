@@ -1,43 +1,62 @@
-import React from 'react'
-import { Student } from '@/types/students/studentType'
+import React from "react";
+import { Student } from "@/types/students/studentType";
 import Link from "next/link";
 
 type StudentCardProps = {
-    student: Student
-}
+  student: Student;
+};
 
-
-const StudentCard = ({student} : StudentCardProps) => {
-
-    const letter = student.name.split(" ");
-    const firstLetter = letter[0][0].toUpperCase();
-    const lastLetter = letter[1][0].toUpperCase(); 
+const StudentCard = ({ student }: StudentCardProps) => {
+  const nameParts = student.name.trim().split(/\s+/);
+  const initials =
+    nameParts.length > 1
+      ? (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase()
+      : nameParts[0].slice(0, 2).toUpperCase();
 
   return (
-    <div className='w-80 shadow-xl flex flex-col gap-3 m-4 p-3 rounded-lg'>
-
-      <div className='flex justify-between p-1'>
-        <div className='bg-[#D5E3FC] text-[#0106A1] pl-2 pr-2 p-1 rounded-lg'>{firstLetter + lastLetter}</div>
-
-        <div className='bg-[#EAEDFF] p-0.5 text-[#53555f]'>{student.id}</div>
-      </div>
-
-      <h2>{student.name}</h2>
-
-      <div className='flex gap-3'>
-        <p className='p-1 bg-[#F2F3FF] text-[#1c4dc7]'>{student.department}</p>
-        <p> Year: {student.year}</p>
-      </div>
-
-      <hr />
-
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between">
       <div>
-        <Link href={`/students/${student.id}`} className='text-[#092b81]'>View Profile →</Link>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 font-bold text-sm text-blue-700">
+            {initials}
+          </div>
+
+          <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-mono font-medium text-slate-600">
+            {student.id}
+          </span>
+        </div>
+
+        <h2 className="text-base font-bold text-slate-900 leading-snug">
+          {student.name}
+        </h2>
+
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="rounded-md bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
+            {student.department}
+          </span>
+          <span className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600">
+            Year {student.year}
+          </span>
+        </div>
+
+        <p className="mt-3 text-xs leading-relaxed text-slate-500 line-clamp-2">
+          {student.about}
+        </p>
       </div>
-      
 
+      <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+        <span className="text-[11px] text-slate-400 font-medium truncate max-w-[140px]">
+          {student.specialization}
+        </span>
+        <Link
+          href={`/students/${student.id}`}
+          className="inline-flex items-center gap-1 rounded-md bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-600 hover:text-white transition-colors"
+        >
+          View Profile <span>-&gt;</span>
+        </Link>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default StudentCard
+export default StudentCard;
