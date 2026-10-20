@@ -1,4 +1,4 @@
-# Student Directory
+# Campus Directory
 
 A modern, responsive campus student and department directory web application built with **Next.js (App Router)**, **React 19**, **Tailwind CSS**, and **TypeScript**.
 
@@ -31,7 +31,7 @@ Visit [http://localhost:3000](http://localhost:3000) in your web browser. The ro
 
 ## 🌟 Key Features
 
-- **Dynamic Student Directory (`/students`)**:
+- **Dynamic Campus Directory (`/students`)**:
   - Grid presentation of enrolled students with custom monogram avatars, student IDs, department badges, and academic standing.
   - Real-time client-side name search and department dropdown filtering.
 
@@ -59,7 +59,7 @@ Visit [http://localhost:3000](http://localhost:3000) in your web browser. The ro
 | Route Pattern | Page Name | Description |
 |---|---|---|
 | `/` | Root | Automatically redirects to `/students` |
-| `/students` | Student Directory | Student cards with instant name search & department filter |
+| `/students` | Campus Directory | Student cards with instant name search & department filter |
 | `/students/[id]` | Student Profile | Dynamic individual student dossier with full academic info |
 | `/departments` | Department Directory | Academic faculties catalog with student and track counts |
 | `/departments/[department]` | Department Details | Dynamic faculty overview, specializations list, and cohort |
